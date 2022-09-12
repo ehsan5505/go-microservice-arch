@@ -2,7 +2,7 @@ package main
 
 import (
 	"net/http"
-	"json"
+	"encoding/json"
 )
 
 type jsonResponse struct {
