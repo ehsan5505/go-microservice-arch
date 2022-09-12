@@ -50,7 +50,7 @@
       method: "POST"
     }
 
-    fetch("http:\/\/localhost:8080",body)
+    fetch("http:\/\/192.168.22.138:8080",body)
     .then((response) => response.json())
     .then((data) => {
       sent.innerHTML = "empty post request";
