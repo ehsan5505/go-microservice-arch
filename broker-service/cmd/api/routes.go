@@ -3,9 +3,11 @@ package main
 import (
 	"net/http"
 	"github.com/go-chi/chi/v5"
+	"github.com/go-chi/chi/v5/middleware"
+	"github.com/go-chi/cors"
 )
 
-func routes() http.Handler {
+func (app *Config) routes() http.Handler {
 	mux := chi.NewRouter()
 
 	// Allow to Access [ACL]
@@ -14,14 +16,16 @@ func routes() http.Handler {
 		AllowedMethods: []string{"GET","POST","PUT","DELETE","OPTIONS"},
 		AllowedHeaders: []string{"Accept","Authorization","Content-Type","X-CSRF-Token"},
 		ExposedHeaders: []string{"Link"},
-		AllowedCredentials: true,
+		AllowCredentials: true,
 
 		MaxAge: 300,
 	}))
-	
+
 	mux.Use(middleware.Heartbeat("/ping"))
+	
+	mux.Post("/", app.Broker)
 
 	return mux
-)
+}
 
 
