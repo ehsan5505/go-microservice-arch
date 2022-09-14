@@ -1,16 +1,16 @@
 #base Go Image
 # Build Image
-FROM golang:1.19-alpine as builder
+# FROM golang:1.19-alpine as builder
 
-RUN mkdir /app
+# RUN mkdir /app
 
-COPY . /app
+# COPY . /app
 
-WORKDIR /app
+# WORKDIR /app
 
-RUN CGO_ENABLED=0 go build -o brokerApp  ./cmd/api
+# RUN CGO_ENABLED=0 go build -o brokerApp  ./cmd/api
 
-RUN chmod +x /app/brokerApp
+# RUN chmod +x /app/brokerApp
 
 # Run the Code on the Image
 
@@ -18,6 +18,8 @@ FROM alpine:latest
 
 RUN mkdir /app
 
-COPY --from=builder /app/brokerApp /app
+# For Build
+# COPY --from=builder /app/brokerApp /app
+COPY brokerApp /app
 
 CMD [ "/app/brokerApp" ]
