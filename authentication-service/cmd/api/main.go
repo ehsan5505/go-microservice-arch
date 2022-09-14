@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"authentication/data"
 	"log"
+	"net/http"
 )
 
 const webPort = "80"
@@ -22,7 +23,7 @@ func main(){
 	app := Config{}
 
 	src := &http.Server{
-		Addr: fmt.Sprintf(":%s",webPort)
+		Addr: fmt.Sprintf(":%s",webPort),
 		Handler: app.routes(),
 	}
 
