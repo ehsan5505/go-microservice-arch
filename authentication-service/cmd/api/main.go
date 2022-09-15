@@ -4,10 +4,10 @@ import (
 	"database/sql"
 	"authentication/data"
 	"log"
+	"fmt"
 	"net/http"
 	"os"
 	"time"
-
 	_ "github.com/jackc/pgconn"
 	_ "github.com/jackc/pgx/v4"
 	_ "github.com/jackc/pgx/v4/stdlib"
@@ -38,7 +38,7 @@ func main(){
 
 	}
 
-	src := &http.Server{
+	srv := &http.Server{
 		Addr: fmt.Sprintf(":%s",webPort),
 		Handler: app.routes(),
 	}
@@ -58,10 +58,11 @@ func openDB(dsn string) (*sql.DB,error){
 
 	err = db.Ping()
 
-	if err != nill {
-		return db, err
+	if err != nil {
+		return nil, err
 	}
-
+	
+	return db, err
 }
 
 
