@@ -84,7 +84,7 @@ func connectToDB() *sql.DB {
 		}
 
 		log.Println("Waiting for 2 seconds....")
-		time.sleep(2 * time.Second)
+		time.Sleep(2 * time.Second)
 		continue
 	}
 }
