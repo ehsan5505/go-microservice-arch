@@ -7,7 +7,7 @@ import (
 	"github.com/go-chi/chi/v5/middleware"
 )
 
-funct (app *Config) routes() http.Handler {
+func (app *Config) routes() http.Handler {
 	mux:= chi.NewRouter()
 
 	// Allow to Access [ACL]
