@@ -23,6 +23,16 @@ type Config struct {
 	Models data.Models
 }
 
+func init(){
+
+	err := godotenv.Load(".env")
+
+	if err != nil {
+		log.Println("Error Loading the .env File")
+	}
+
+}
+
 func main(){
 	log.Println("Starting the Authentication Service")
 
