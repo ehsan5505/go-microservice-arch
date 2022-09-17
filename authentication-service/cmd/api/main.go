@@ -54,7 +54,8 @@ func main(){
 
 func openDB(dsn string) (*sql.DB,error){
 	// db, err := pgx.Connect(context.Background(),os.Getenv("DATABASE_URL"))
-	log.Println(sql.Open(pgx,os.Getenv("DATABASE_URL")));
+	db, err :=sql.Open(pgx,os.Getenv("DATABASE_URL")));
+	log.Println(err)
 	// db, err := sql.Open("pgx",dsn)
 	if err !=nil {
 		return nil, err
