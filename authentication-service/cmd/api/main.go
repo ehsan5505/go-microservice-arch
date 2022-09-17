@@ -1,10 +1,10 @@
 package main
 
 import (
-	"database/sql"
 	"authentication/data"
-	"log"
+	"database/sql"
 	"fmt"
+	"log"
 	"net/http"
 	"os"
 	"time"
@@ -13,7 +13,6 @@ import (
 	_ "github.com/jackc/pgconn"
 	_ "github.com/jackc/pgx/v4"
 	_ "github.com/jackc/pgx/v4/stdlib"
-
 )
 
 const webPort = "80"
@@ -71,10 +70,10 @@ func openDB(dsn string) (*sql.DB,error){
 
 func connectToDB() *sql.DB {
 	dsn := os.Getenv("DSN")
-	log.Println("DSN: %s",dsn)
+	// log.Println("DSN: %s",dsn)
 	for {
 		connnection, err := openDB(dsn)
-		log.Println(err)
+		// log.Println(err)
 		if err != nil {
 			log.Println("Postgress is not yet ready to serve....")
 			counts++
