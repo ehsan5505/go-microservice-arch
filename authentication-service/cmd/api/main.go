@@ -8,7 +8,6 @@ import (
 	"net/http"
 	"os"
 	"time"
-	"github.com/joho/godotenv"
 	_ "github.com/jackc/pgconn"
 	_ "github.com/jackc/pgx/v4"
 	_ "github.com/jackc/pgx/v4/stdlib"
