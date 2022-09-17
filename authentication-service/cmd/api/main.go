@@ -23,16 +23,6 @@ type Config struct {
 	Models data.Models
 }
 
-func init(){
-
-	err := godotenv.Load(".env")
-
-	if err != nil {
-		log.Println("Error Loading the .env File")
-	}
-
-}
-
 func main(){
 	log.Println("Starting the Authentication Service")
 
@@ -61,11 +51,8 @@ func main(){
 }
 
 func openDB(dsn string) (*sql.DB,error){
-	// db, err := pgx.Connect(context.Background(),os.Getenv("DATABASE_URL"))
-	log.Println("ENV: %s",os.Getenv("DATABASE_URL"));
-	db, err :=sql.Open("pgx",os.Getenv("DATABASE_URL"));
-	log.Println(err)
-	// db, err := sql.Open("pgx",dsn)
+
+	db, err :=sql.Open("pgx",dsn);
 	if err !=nil {
 		return nil, err
 	}
@@ -82,10 +69,9 @@ func openDB(dsn string) (*sql.DB,error){
 
 func connectToDB() *sql.DB {
 	dsn := os.Getenv("DSN")
-	log.Println("DSN: %s",dsn)
 	for {
 		connnection, err := openDB(dsn)
-		log.Println(err)
+
 		if err != nil {
 			log.Println("Postgress is not yet ready to serve....")
 			counts++
