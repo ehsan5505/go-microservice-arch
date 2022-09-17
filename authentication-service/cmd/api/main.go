@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"os"
 	"time"
-	// "context"
+	"context"
 	// _ "github.com/jackc/pgx/v5"
 	_ "github.com/jackc/pgconn"
 	_ "github.com/jackc/pgx/v4"
@@ -52,7 +52,7 @@ func main(){
 }
 
 func openDB(dsn string) (*sql.DB,error){
-	db, err := pgconn.Connect(context.Background(),os.Getenv("DATABASE_URL"))
+	db, err := pgx.Connect(context.Background(),os.Getenv("DATABASE_URL"))
 	// db, err := sql.Open("pgx",dsn)
 	if err !=nil {
 		return nil, err
