@@ -70,10 +70,10 @@ func openDB(dsn string) (*sql.DB,error){
 
 func connectToDB() *sql.DB {
 	dsn := os.Getenv("DSN")
-	// log.Println("DSN: %s",dsn)
+	log.Println("DSN: %s",dsn)
 	for {
 		connnection, err := openDB(dsn)
-		// log.Println(err)
+		log.Println(err)
 		if err != nil {
 			log.Println("Postgress is not yet ready to serve....")
 			counts++
