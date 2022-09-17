@@ -51,7 +51,8 @@ func main(){
 }
 
 func openDB(dsn string) (*sql.DB,error){
-	db, err := sql.Open("pgx",dsn)
+	db, err := pgx.Connect(context.Background(),os.Getenv("DATABASE_URL"))
+	// db, err := sql.Open("pgx",dsn)
 	if err !=nil {
 		return nil, err
 	}
@@ -71,6 +72,7 @@ func connectToDB() *sql.DB {
 	log.Println("DSN: %s",dsn)
 	for {
 		connnection, err := openDB(dsn)
+		log.Println(err)
 		if err != nil {
 			log.Println("Postgress is not yet ready to serve....")
 			counts++
