@@ -28,7 +28,7 @@ func (app *Config) Broker(w http.ResponseWriter, r *http.Request){
 	// w.Write(out)
 }
 
-func (app *Config) HandleSubmission(w http.ResponseWriter, *http.Request) {
+func (app *Config) HandleSubmission(w http.ResponseWriter,r *http.Request) {
 	var requestPayload RequestPayload
 
 	err := app.readJSON(w,r,&requestPayload)
