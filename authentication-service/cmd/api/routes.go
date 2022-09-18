@@ -4,6 +4,7 @@ import (
 	"net/http"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/cors"
+	"github.com/go-chi/chi/v5/middleware"
 )
 
 func (app *Config) routes() http.Handler {
@@ -19,6 +20,9 @@ func (app *Config) routes() http.Handler {
 		MaxAge: 300,
 	}))
 
+	mux.Use(moddleware.Heartbeat("/ping"))
+	mux.Post("/authentication",app.Authenticate)
 	return mux
+
 
 }
