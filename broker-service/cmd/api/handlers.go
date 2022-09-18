@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"net/http"
 	"errors"
+	"strconv"
 )
 
 type RequestPayload struct {
@@ -71,7 +72,7 @@ func (app *Config) authenticate (w http.ResponseWriter,a AuthPayload) {
 		return 
 	}else if response.StatusCode != http.StatusAccepted {
 		// app.errorJSON(w, errors.New(`Error in the Service Call! Code: ${response.StatusCode}`))
-		app.errorJSON(w, errors.New(response.StatusCode))
+		app.errorJSON(w, errors.New(strconv.Itoa(response.StatusCode)))
 		
 		return 
 	}
