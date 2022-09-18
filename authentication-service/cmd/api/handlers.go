@@ -3,9 +3,10 @@ package main
 import (
 	"errors"
 	"net/http"
+	"fmt"
 )
 
-func (*app Config) Authenticate(w http.ResponseWriter, r *http.Request) {
+func (app *Config) Authenticate(w http.ResponseWriter, r *http.Request) {
 
 	var requestPayload struct {
 		Email string `json:"email"`
@@ -22,16 +23,13 @@ func (*app Config) Authenticate(w http.ResponseWriter, r *http.Request) {
 	// validate the user against the database
 
 	user, err := app.Models.User.GetByEmail(requestPayload.Email)
-
 	if err != nil {
 		app.errorJSON(w, errors.New("Invalid Credentials"), http.StatusBadRequest)
 		return 
 	}
 
 	valid, err := user.PasswordMatches(requestPayload.Password)
-
-	if err != nil || !valid 
-	{
+	if err != nil || !valid {
 		app.errorJSON(w, errors.New("Invalid Credentials"), http.StatusBadRequest)
 		return
 	}
