@@ -14,7 +14,6 @@ func (app *Config) Authenticate(w http.ResponseWriter, r *http.Request) {
 	}
 
 	err := app.readJSON(w,r,&requestPayload)
-
 	if err != nil {
 		app.errorJSON(w, err, http.StatusBadRequest)
 		return
@@ -41,6 +40,5 @@ func (app *Config) Authenticate(w http.ResponseWriter, r *http.Request) {
 	}
 
 	app.writeJSON(w, http.StatusAccepted, payload)
-
 
 }
