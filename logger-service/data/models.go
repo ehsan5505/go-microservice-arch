@@ -130,12 +130,11 @@ func (l *LogEntry) Update() (*mongo.UpdateResult, error) {
 	 result, err := collection.UpdateOne(
 		ctx,
 		bson.M{"_id", docID},
-		bson.D{
-			{
-				"$set", bson.D{
-					{ "name", l.Name },
-					{ "data", l.Data },
-					{ "updated_at", time.Now() },
+		bson.D {
+			{"$set", bson.D{
+					{"name", l.Name},
+					{"data", l.Data},
+					{"updated_at", time.Now() },
 			}},
 		},
 	 )
