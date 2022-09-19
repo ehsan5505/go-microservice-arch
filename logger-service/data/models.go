@@ -129,7 +129,7 @@ func (l *LogEntry) Update() (*mongo.UpdateResult, error) {
 
 	 result, err := collection.UpdateOne(
 		ctx,
-		bson.M{"_id",docID},
+		bson.M{"_id", docID},
 		bson.D{
 			{
 				"$set", bson.D{
