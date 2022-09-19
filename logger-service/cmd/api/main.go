@@ -8,10 +8,10 @@ import (
 )
 
 const (
-	webPort: "80"
-	rpcPort: "5001"
-	grpcPort: "50001"
-	mongoURL: "mongodb://localhost/27017"
+	webPort= "80"
+	rpcPort= "5001"
+	grpcPort= "50001"
+	mongoURL= "mongodb://localhost/27017"
 )
 
 var client *mongo.Client
