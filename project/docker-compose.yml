@@ -27,11 +27,16 @@ services:
       - DSN=host=postgres port:5432 user=postgres password=password dbname=users sslmode=disable timezone=UTC connect_timeout=5
       - DATABASE_URL=postgres://postgres:password@postgres:5432/users
     depends_on:
-      - postgres
-      # DSN2: "host=postgres port:5432 user=postgres password=password dbname=users sslmode=disable timezone=UTC connect_timeout=5"
-      # DATABASE_UR2: postgres://postgres:password@postgres:5432/users
-    
+      - postgres    
   
+  logger-service:
+    build:
+      context: ./../logger-service
+      dockerfile: ./../logger-service/logger-service.dockerfile
+    restart: always
+    deploy:
+      mode: replicated
+      replicas: 1
 
   postgres:
     image: 'postgres:14.0'
