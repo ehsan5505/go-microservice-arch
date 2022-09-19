@@ -2,6 +2,7 @@ package main
 
 import (
 	"net/http"
+	"log-service/data"
 )
 
 type JSONPayload struct {
