@@ -72,19 +72,17 @@ func connectToMongo() (*mongo.Client, error) {
 	clientOptions := options.Client().ApplyURI(mongoURL)
 	
 	// Change the setting from the environment to pick
-	clientOptions.SetAuth(options.Credentials{
+	clientOptions.SetAuth(options.Credential{
 		Username: "admin",
 		Password: "password",
 	})
 
 	conn, err := mongo.Connect(context.TODO(), clientOptions)
-
 	if err !=nil {
 		log.Println("Error Connecting:",err)
 		return nil,err
 	}
 
 	return conn,nil
-
 
 }
