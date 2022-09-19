@@ -4,6 +4,8 @@ import (
 	"errors"
 	"net/http"
 	"fmt"
+	"bytes"
+	"encoding/json"
 )
 
 func (app *Config) Authenticate(w http.ResponseWriter, r *http.Request) {
