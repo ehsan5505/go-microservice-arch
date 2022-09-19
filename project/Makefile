@@ -36,7 +36,7 @@ build_auth:
 	@echo "Done!"
 
 ## build_logger: builds the Logger binary as a linux executable
-build_auth:
+build_logger:
 	@echo "Building logger binary..."
 	cd ../logger-service && env GOOS=linux CGO_ENABLED=0 go build -o ${LOGGER_BINARY} ./cmd/api
 	@echo "Done!"
