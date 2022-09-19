@@ -50,7 +50,7 @@ func (app *Config) Authenticate(w http.ResponseWriter, r *http.Request) {
 
 }
 
-funct (app *Config) logRequest(name, data string) error {
+func (app *Config) logRequest(name, data string) error {
 	var entry struct {
 		Name string `json:"name"`
 		Data string `json:"data"` 
