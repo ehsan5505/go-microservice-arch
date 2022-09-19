@@ -57,6 +57,7 @@ func main() {
 		Handler: app.routes(),
 	}
 	err = srv.ListenAndServe()
+	log.Println(err)
 	if err != nil {
 		log.Panic()
 	}
