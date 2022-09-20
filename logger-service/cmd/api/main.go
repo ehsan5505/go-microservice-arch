@@ -12,10 +12,10 @@ import (
 )
 
 const (
-	webPort= "10101"
+	webPort= "80"
 	rpcPort= "5001"
 	grpcPort= "50001"
-	mongoURL= "mongodb://192.168.22.138/27017"
+	mongoURL= "mongodb://mongo:27017"
 )
 
 var client *mongo.Client
