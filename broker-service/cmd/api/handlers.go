@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"errors"
 	"fmt"
+	"log"
 )
 
 type RequestPayload struct {
@@ -168,6 +169,7 @@ func (app *Config) sendMail(w http.ResponseWriter,msg MailPayload) {
 	// Post Mail Request
 	request, err := http.NewRequest("POST",mailServiceUrl,bytes.NewBuffer(jsonData))
 	if err != nil {
+		log.Println(err)
 		app.errorJSON(w,err)
 		return 
 	}
@@ -177,6 +179,7 @@ func (app *Config) sendMail(w http.ResponseWriter,msg MailPayload) {
 	client := &http.Client{}
 	response, err := client.Do(request)
 	if err != nil {
+		log.Println(err)
 		app.errorJSON(w,err)
 		return 
 	}
