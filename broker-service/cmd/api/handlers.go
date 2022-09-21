@@ -25,12 +25,12 @@ type LogPayload struct {
 	Data string `json:"data"`
 }
 
-type MailPayload struct [
+type MailPayload struct {
 	From		string	`json:"from"`
 	To			string	`json:"to"`
 	Subject	string	`json:"subject"`
 	Message	string	`json:"message"`
-]
+}
 
 func (app *Config) Broker(w http.ResponseWriter, r *http.Request){
 	payload := jsonResponse {
