@@ -15,14 +15,14 @@ const webPort = "80"
 
 func main() {
 	app := Config{
-		Mailer: createMail
+		Mailer: createMail()
 	}
 
 	log.Println("Starting the Mail Server On Port ");
 
 	srv := &http.Server{
-		Addr: fmt.Sprintf(":%s",webPort)
-		Handler: app.routes()
+		Addr: fmt.Sprintf(":%s",webPort),
+		Handler: app.routes(),
 	}
 
 	err := srv.ListenAndServe()
@@ -33,7 +33,7 @@ func main() {
 }
 
 func createMail() Mail {
-	port, _ := strconv(.Atoi(os.Getenv("MAIL_PORT")))
+	port, _ := strconv.Atoi(os.Getenv("MAIL_PORT"))
 	m:= Mail {
 		Domain: 		os.Getenv("MAIL_DOMAIN"),
 		Host: 			os.Getenv("MAIL_HOST"),

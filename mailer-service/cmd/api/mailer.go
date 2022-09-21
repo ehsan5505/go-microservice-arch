@@ -148,7 +148,7 @@ func (m *Mail) inlineCSS(s string) (string, error) {
 	options := premailer.Options{
 		RemoveClasses: false,
 		CssToAttributes: false,
-		KeepBangImportant: true
+		KeepBangImportant: true,
 	}
 	prem, err := premailer.NewPremailerFromString(s,&options)
 	if err != nil {
