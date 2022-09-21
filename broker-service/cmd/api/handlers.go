@@ -159,7 +159,8 @@ func (app *Config) authenticate (w http.ResponseWriter,a AuthPayload) {
 }
 
 func (app *Config) sendMail(w http.ResponseWriter,msg MailPayload) {
-	jsonData, _ = json.MarshalIndent(msg,"","\t")
+	
+	jsonData, _ := json.MarshalIndent(msg,"","\t")
 
 	// Call the Mail Service
 	mailServiceUrl := "http://mailer-service/send"
@@ -182,7 +183,7 @@ func (app *Config) sendMail(w http.ResponseWriter,msg MailPayload) {
 
 	defer response.Body.Close()
 	if response.StatusCode != http.StatusAccepted {
-		app.errorJSON(w,error.New("Error Calling Mail Service"))
+		app.errorJSON(w,errors.New("Error Calling Mail Service"))
 		return 
 	}
 
