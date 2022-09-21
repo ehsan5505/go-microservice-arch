@@ -75,7 +75,7 @@ func (m *Mail) SendSMTPMessage(msg Message) error {
 
 	smtpClient, err := server.Connect()
 	if err != nil {
-		return "",nil
+		return err
 	}
 
 	// Now send an email
@@ -97,7 +97,7 @@ func (m *Mail) SendSMTPMessage(msg Message) error {
 	// Send the file
 	err = email.Send(smtpClient)
 	if err != nil {
-		return "",err
+		return err
 	}
 
 	// Success in email generation
