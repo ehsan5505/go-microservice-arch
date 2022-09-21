@@ -54,12 +54,12 @@ func (m *Mail) SendSMTPMessage(msg Message) error {
 	// HTML Text Message
 	formattedMessage, err := m.buildHTMLMessage(msg)
 	if err != nil {
-		return "",err
+		return err
 	}
 	// Plain Text Message
 	plainMessage, err := m.buildPlainTextMessage(msg)
 	if err != nil {
-		return "",err
+		return err
 	}
 
 	// Create a Mail server
