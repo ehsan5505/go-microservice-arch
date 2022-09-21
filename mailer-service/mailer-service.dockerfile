@@ -5,6 +5,6 @@ RUN mkdir /app
 WORKDIR /app
 
 COPY mailerApp /app
-COPY templates /app/
+COPY templates /templates
 
 CMD [ "/app/mailerApp" ]
