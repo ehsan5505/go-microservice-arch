@@ -4,7 +4,6 @@ import (
 	"html/template"
 	"bytes"
 	"time"
-	"os"
 
 	"github.com/vanng822/go-premailer/premailer"
 	mail "github.com/xhit/go-simple-mail/v2"
