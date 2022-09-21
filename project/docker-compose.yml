@@ -36,10 +36,11 @@ services:
     deploy:
       mode: replicated
       replicas: 1
+
   mailer-service:
     build:
       context: ./../mailer-service
-      dockerfile: ./../mailer-service/dockerfile
+      dockerfile: ./../mailer-service/mailer-service.dockerfile
     restart: always
     deploy: 
       mode: replicated
