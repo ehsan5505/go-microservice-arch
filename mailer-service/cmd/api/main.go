@@ -15,7 +15,7 @@ const webPort = "80"
 
 func main() {
 	app := Config{
-		Mailer: createMail()
+		Mailer: createMail(),
 	}
 
 	log.Println("Starting the Mail Server On Port ");
