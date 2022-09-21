@@ -36,6 +36,23 @@ services:
     deploy:
       mode: replicated
       replicas: 1
+  mailer-service:
+    build:
+      context: ./../mailer-service
+      dockerfile: ./../mailer-service/dockerfile
+    restart: always
+    deploy: 
+      mode: replicated
+      replicas: 1
+    environment:
+      - MAIL_DOMAIN=192.168.22.138
+      - MAIL_HOST=mailhog
+      - MAIL_PORT=1025
+      - MAIL_USERNAME=""
+      - MAIL_PASSWORD=""
+      - MAIL_ENCRYPTION=none
+      - MAIL_FROM=Someone
+      - MAIL_FROM_ADDRESS=someone@nowhere.com
 
   postgres:
     image: 'postgres:14.0'

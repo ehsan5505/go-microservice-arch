@@ -40,7 +40,7 @@ func createMail() Mail {
 		Port: 			port,
 		Username: 	os.Genenv("MAIL_USERNAME"),
 		Password: 	os.Getenv("MAIL_PASSWORD"),
-		Encryption: os.Getenv("MAIL_Encryption"),
+		Encryption: os.Getenv("MAIL_ENCRYPTION"),
 		FromName: 	os.Getenv("MAIL_FROM"),
 		FromAddress: os.Getenv("MAIL_FROM_ADDRESS"),
 	}
