@@ -40,7 +40,7 @@ func (m *Mail) SendSMTPMessage(msg Message) error {
 		msg.From = m.FromAddress
 	}
 
-	if msg.Name == "" {
+	if msg.FromName == "" {
 		msg.FromName = m.FromName
 	}
 
