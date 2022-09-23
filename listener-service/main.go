@@ -34,28 +34,26 @@ func connect() (*amqp.Connection,error) {
 	var count int64
 
 	for {
-	c, err := amqp.Dial("amqp://guest:guest@localhost")
-	if err != nil {
-		fmt.Println("Rabbit MQ Not Ready...")
-		count++
-	}else {
-		conn = c
-		break
-	}
+		c, err := amqp.Dial("amqp://guest:guest@localhost")
+		if err != nil {
+			fmt.Println("Rabbit MQ Not Ready...")
+			count++
+		}else {
+			conn = c
+			break
+		}
 
-	if (count > 5 ) {
-		log.Println(err)
-		return  nil, err
-	}
+		if (count > 5 ) {
+			log.Println(err)
+			return  nil, err
+		}
 
-	waitTime = time.Duration(math.Pow(float64(waitTime),2))
-	log.Println("Retry for the Connection")
-	time.Sleep(waitTime)
+		waitTime = time.Duration(math.Pow(float64(waitTime),2))
+		log.Println("Retry for the Connection")
+		time.Sleep(waitTime)
 	}
-
 
 	// atlast connection was stablished
-
 	return conn,nil
 
 }
