@@ -2,7 +2,7 @@ package event
 
 import (
 	amqp "github.com/rabbitmq/amqp091-go"
-	"http"
+	"net/http"
 	"bytes"
 	"encoding/json"
 	"fmt"
