@@ -52,7 +52,7 @@ build_mailer:
 ## build_listener: builds the Listener binary as a linux executable
 build_listener:
 	@echo "Building Listener binary..."
-	cd ../listener-service && env GOOS=linux CGO_ENABLED=0 go build -o ${LISTENER_BINARY} ./cmd/api
+	cd ../listener-service && env GOOS=linux CGO_ENABLED=0 go build -o ${LISTENER_BINARY} .
 	@echo "Done!"
 
 ## build_front: builds the frone end binary
