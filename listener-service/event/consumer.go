@@ -2,6 +2,11 @@ package event
 
 import (
 	amqp "github.com/rabbitmq/amqp091-go"
+	"http"
+	"bytes"
+	"encoding/json"
+	"fmt"
+	"log"
 )
 
 type Consumer struct {
@@ -111,5 +116,29 @@ func handlePayload(payload Payload) {
 }
 
 func logEvent(entry Payload) error {
-	
+	jsonData := json.MarshalIndent(entry, "", "\t")
+
+	logServiceURL := "http://logger-service/log"
+
+	request, err := http.NewRequest("POST",logServiceURL,bytes.NewBuffer(jsonData))
+	if err != nil {
+		return err
+	}
+
+	request.Header.Set("Content-Type","application/json")
+
+	client := &http.Client()
+
+	response, err := client.Do(request)
+	if err != nil {
+		return err
+	}
+	defer response.Body.Close()
+
+	if response.StatusCode != http.StatusCode {
+		return err
+	}
+
+	return nil 
+
 }
