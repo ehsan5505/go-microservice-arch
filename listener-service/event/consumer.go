@@ -74,7 +74,7 @@ func (consumer *Consumer) Listen(topics []string) error {
 		false,			// exclusive?
 		false,			// noLocal?
 		false,			// no wait?
-		nil					// args
+		nil,					// args
 	);
 	if err != nil {
 		return err
