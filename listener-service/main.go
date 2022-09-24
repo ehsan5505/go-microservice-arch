@@ -2,6 +2,7 @@ package main
 
 import (
 	amqp "github.com/rabbitmq/amqp091-go"
+	"listener/event"
 	"fmt"
 	"log"
 	"os"
@@ -25,7 +26,7 @@ func main(){
 	// Consume the data
 	consumer, err := event.NewConsumer(rabbitConn)
 	if err != nil {
-		Panic(err)
+		panic(err)
 	}
 
 	// Watch consume and trigger event
