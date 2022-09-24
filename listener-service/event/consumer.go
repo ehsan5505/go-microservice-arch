@@ -90,7 +90,8 @@ func (consumer *Consumer) Listen(topics []string) error {
 		}
 	}()
 
-	fmt.Printf("Waiting for Message [Exchange, Queue] [logs_topic, %s]\n",q.Name)<-forever
+	fmt.Printf("Waiting for Message [Exchange, Queue] [logs_topic, %s]\n",q.Name)
+	<-forever
 
 	return nil
 
@@ -116,7 +117,7 @@ func handlePayload(payload Payload) {
 }
 
 func logEvent(entry Payload) error {
-	jsonData := json.MarshalIndent(entry, "", "\t")
+	jsonData,_ := json.MarshalIndent(entry, "", "\t")
 
 	logServiceURL := "http://logger-service/log"
 
@@ -127,7 +128,7 @@ func logEvent(entry Payload) error {
 
 	request.Header.Set("Content-Type","application/json")
 
-	client := &http.Client()
+	client := &http.Client{}
 
 	response, err := client.Do(request)
 	if err != nil {
@@ -135,7 +136,7 @@ func logEvent(entry Payload) error {
 	}
 	defer response.Body.Close()
 
-	if response.StatusCode != http.StatusCode {
+	if response.StatusCode != http.StatusAccepted {
 		return err
 	}
 
