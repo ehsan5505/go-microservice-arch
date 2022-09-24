@@ -43,7 +43,7 @@ func connect() (*amqp.Connection,error) {
 	var count int64
 
 	for {
-		c, err := amqp.Dial("amqp://guest:guest@localhost")
+		c, err := amqp.Dial("amqp://guest:guest@rabbitmq")
 		if err != nil {
 			fmt.Println("Rabbit MQ Not Ready...")
 			count++
